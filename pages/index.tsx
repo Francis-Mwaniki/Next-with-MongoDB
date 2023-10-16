@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-
+import Movies from './movies'
 type ConnectionStatus = {
   isConnected: boolean
 }
@@ -37,71 +37,28 @@ export default function Home({
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Movies</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
-        </h1>
-
-        {isConnected ? (
-          <h2 className="subtitle">You are connected to MongoDB</h2>
-        ) : (
-          <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
-            for instructions.
-          </h2>
-        )}
+        <h1 className="title">Movies</h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          {isConnected
+            ? 'You are connected to MongoDB'
+            : 'Could not connect to MongoDB'}
         </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+         
+        <p>Find in-depth information about Next.js features and API.</p>
+      <a href="/top"
+        className="href">
+       
+       <span>Movies &rarr;</span></a>
+     
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+     
 
       <style jsx>{`
         .container {
@@ -213,11 +170,29 @@ export default function Home({
         .card:active {
           color: #0070f3;
           border-color: #0070f3;
+          trasition: 0.5s;
+           ease-in-out;
+          transform: scale(1.1);
+          
         }
 
         .card h3 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;
+        }
+        .href {
+          margin: 0 0 1rem 0;
+          font-size: 1.5rem;
+          background-color: #000;
+          color: #fff;
+          padding: 10px;
+          border-radius: 10px;
+
+        }
+        .href:hover{
+          background-color: #fff;
+          color: #000;
+          border: 1px solid #000;
         }
 
         .card p {
